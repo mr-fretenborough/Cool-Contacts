@@ -1,3 +1,4 @@
 # Cool-Contacts
-This repo will house all files regarding the full stack Contact Manager App that will be written for Leinecker's Object-Oriented Software Course.
+A web application that can be used to store and retrieve all your contacts.
+Sign up and gain the ability to register new contacts and search for old ones!
 ---
