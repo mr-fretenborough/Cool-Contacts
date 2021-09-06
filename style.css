@@ -76,3 +76,7 @@ a:hover {
 .center button:active {
     background: #2691d9;
 }
+
+.signup {
+    height: 600px;
+}
