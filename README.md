@@ -1,6 +1,6 @@
 # Cool-Contacts
 This repo will house all files regarding the full stack Contact Manager App that will be written for Leinecker's Object-Oriented Software Course.
-
+---
 Project Notes:
 * This project will be a simple full stack contact manager.
 * On initial render, the user will have the option to login or register.
