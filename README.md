@@ -1,4 +1,5 @@
 # Cool-Contacts
+<<<<<<< HEAD
 This repo will house all files regarding the full stack Contact Manager App that will be written for Leinecker's Object-Oriented Software Course.
 
 Project Notes:
@@ -17,3 +18,8 @@ Submission Notes:
     * The PowerPoint must include a Gantt Chart, Use Case Diagram, and
       an Entity Relationship Diagram.
     * Do not .zip the PowerPoint file.
+=======
+A web application that can be used to store and retrieve all your contacts.
+Sign up and gain the ability to register new contacts and search for old ones!
+---
+>>>>>>> front-end
