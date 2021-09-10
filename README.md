@@ -6,7 +6,7 @@ Project Notes:
     * On initial render, the user will have the option to login or register.
     * Once a valid account has been accessed, the user will have the option to
       Create, Read, Update, or Delete their contacts.
-        - Thus, there must be a search function on the contacts.
+        * Thus, there must be a search function on the contacts.
     * The app must reside on a remote server.
     * The minimum information for each contact: Name, Email, Phone, Date Created.
     * You must use Swagger Hub to document/test the API.
