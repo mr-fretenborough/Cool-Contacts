@@ -4,18 +4,27 @@
         $body = json_decode(file_get_contents('php://input'), true);
         $conn = new mysqli("localhost", "DBADMIN", "DBADMIN", "ContactBook");
 
+        /*
+        The input is to be of the form:
+            {
+                "FirstName":"",
+                "LastName":"",
+                "Email":"",
+                "PhoneNumber":"",
+                "UserID":""
+            }
+        The output will be of the form:
+            {
+                "status":""
+            }
+        */
+
         // Validate connection
         if ($conn->connect_error) {
             returnStatus($conn->connect_error);
         } else {
             // Seed the SQL Query with basic format
-            $query = $conn.prepare(" DELETE FROM ContactBook.Contacts
-                WHERE FirstName = ?
-                    AND LastName = ?
-                    AND Email = ?
-                    AND PhoneNumber = ?
-                    AND UserID = ?
-            ");
+            $query = $conn.prepare(" DELETE FROM ContactBook.Contacts WHERE FirstName = ? AND LastName = ? AND Email = ? AND PhoneNumber = ? AND UserID = ?");
             // Grab JSON and populate the SQL Query
             $query->bind_param("ssssi",
                 $body["FirstName"],
