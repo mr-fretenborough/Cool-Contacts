@@ -55,10 +55,15 @@
         returnStatus("just testing this.");
     }
 
-    function returnStatus($msg) {
-        $format = '{"status":"' . $msg . '"}';
-        // Report the status of the operation
+    function returnJSON( $object )
+    {
         header('Content-type: application/json');
-        echo $format;
+        echo $object;
+    }
+
+    function returnStatus( $status )
+    {
+        $format = '{"status":"' . $status . '"}';
+        returnJSON( $format );
     }
 ?>
