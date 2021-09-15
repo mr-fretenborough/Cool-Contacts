@@ -51,6 +51,8 @@
         // Let 'em go
         $query->close();
         $conn->close();
+
+        returnStatus("just testing this.");
     }
 
     function returnStatus($msg) {
