@@ -1,5 +1,8 @@
 <?php
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        // Poor man's debugger
+        returnStatus("before logic");
+
         // Grab the data and initiate the connection
         $body = json_decode(file_get_contents('php://input'), true);
         $conn = new mysqli("localhost", "DBADMIN", "DBADMIN", "ContactBook");
