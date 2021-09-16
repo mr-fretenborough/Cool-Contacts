@@ -1,51 +1,70 @@
 <?php
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        // Initialize some variables
+        // Initialize server-specific variables
         $server = "localhost";
         $username = "root";
         $password = "TMs7aedJuMNX";
         $database = "ContactBook";
 
-
-        // Grab the data and initiate the connection
+        // Parse the POST request
         $body = json_decode(file_get_contents('php://input'), true);
+        $FirstName = $body["FirstName"];
+        $LastName = $body["LastName"];
+        $Email = $body["Email"];
+        $PhoneNumber = $body["PhoneNumber"];
+        $UserID = $body["UserID"];
+
+
+        // Initiate the server connection
         $conn = new mysqli($server, $username, $password, $database);
 
-         /**************************************
-         The input is to be of the form:
-             {
-                 "FirstName":"",
-                 "LastName":"",
-                 "Email":"",
-                 "PhoneNumber":"",
-                 "UserID":""
-             }
-         The output will be of the form:
-             {
-                 "status":""
-             }
-         ***************************************/
+        /**************************************
+             The input is to be of the form:
+                {
+                    "FirstName":"",
+                    "LastName":"",
+                    "Email":"",
+                    "PhoneNumber":"",
+                    "UserID":""
+                }
+            The output will be of the form:
+                {
+                    "status":""
+                }
+        ***************************************/
 
-         // Validate connection
-         if ($conn->connect_error) {
-             returnStatus($conn->connect_error);
-         } else {
+        // Validate connection
+        if ($conn->connect_error) {
+            returnStatus($conn->connect_error);
+        } else {
              // Seed the SQL Query with basic format
-             $query = $conn.prepare(" DELETE FROM Contacts WHERE FirstName = ? ");
+             $stmt = $conn.prepare(" DELETE FROM Contacts
+                WHERE FirstName = ?
+                AND LastName = ?
+                AND Email = ?
+                AND PhoneNumber = ?
+                AND UserID = ?
+            ");
 
              // Check if the query preparation completed successfully
-             if ( false === $query ) {
+             if ( false === $stmt ) {
                 returnStatus('FAILURE: Query preparation failed.');
                 exit();
             }
 
              // Grab JSON and populate the SQL Query
-             $bind = $query->bind_param("s", $body["FirstName"]);
+            $bind = $stmt->bind_param("ssssi",
+                $FirstName,
+                $LastName,
+                $Email,
+                $PhoneNumber,
+                $UserID
+            );
              // Execute the SQL Query
-             $exec = $query->execute();
+             $exec = $stmt->execute();
 
              // Status will be the number of rows deleted. This should be either a 1 for success or 0 for failure
-             $status = $query->get_result()->fetch_assoc();
+             $status = $stmt->get_result()->fetch_assoc();
 
              // Report the status
              if ($status == 1) {
@@ -55,14 +74,12 @@
              } else {
                  returnStatus("FAILURE: More than one contact was deleted.");
              }
-         }
+        }
 
-         // Let 'em go
-         $query->close();
-         $conn->close();
-
-         returnStatus("just testing this.");
-     }
+        // Let 'em go
+        $stmt->close();
+        $conn->close();
+    }
 
      function returnJSON( $object )
      {
