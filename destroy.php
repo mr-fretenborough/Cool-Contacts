@@ -1,6 +1,6 @@
 <?php
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        // Poor man's debugger
+
 
         // Grab the data and initiate the connection
         $body = json_decode(file_get_contents('php://input'), true);
@@ -24,9 +24,15 @@
         // Validate connection
         if ($conn->connect_error) {
             returnStatus($conn->connect_error);
+
+             // Poor man's debugger
+        returnStatus("Here...1");
         } else {
             // Seed the SQL Query with basic format
-            $query = $conn.prepare(" DELETE FROM ContactBook.Contacts WHERE FirstName = ? AND LastName = ? AND Email = ? AND PhoneNumber = ? AND UserID = ?");
+
+             // Poor man's debugger
+        returnStatus("Here...2");
+            $query = $conn.prepare(" DELETE FROM ContactBook.Contacts WHERE FirstName = ? AND LastName = ? AND Email = ? AND PhoneNumber = ? AND UserID = ? ");
             // Grab JSON and populate the SQL Query
             $query->bind_param("ssssi",
                 $body["FirstName"],
