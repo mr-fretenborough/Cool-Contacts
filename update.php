@@ -21,9 +21,7 @@ $conn = new mysqli("localhost", "DBADMIN", "DBADMIN", "ContactBook");
         Email=?,
         PhoneNumber=?,
         where ID=?"
-    ) VALUES (
-        ?, ?, ?, ?, ?,
-    ));
+    ) ;
 		$stmt->bind_param("ssssi",
         $body["FirstName"],
         $body["LastName"],
