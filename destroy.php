@@ -1,13 +1,8 @@
 <?php
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
-
         // Grab the data and initiate the connection
         $body = json_decode(file_get_contents('php://input'), true);
-
-        echo $body;
-
-        $conn = new mysqli("localhost", "DBADMIN", "DBADMIN", "ContactBook");
+        $conn = new mysqli("localhost", "root", "TMs7aedJuMNX", "ContactBook");
 
         /*
         The input is to be of the form:
