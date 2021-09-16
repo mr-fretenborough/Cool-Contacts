@@ -20,7 +20,7 @@
          LastName=?,
          Email=?,
          PhoneNumber=?,
-         where ID=?"
+         WHERE ID=?"
      ) ;
  		$stmt->bind_param("ssssi",
          $inData["FirstName"],
