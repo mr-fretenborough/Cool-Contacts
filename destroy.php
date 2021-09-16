@@ -24,14 +24,8 @@
         // Validate connection
         if ($conn->connect_error) {
             returnStatus($conn->connect_error);
-
-             // Poor man's debugger
-        returnStatus("Here...1");
         } else {
             // Seed the SQL Query with basic format
-
-             // Poor man's debugger
-        returnStatus("Here...2");
             $query = $conn.prepare(" DELETE FROM ContactBook.Contacts WHERE FirstName = ? AND LastName = ? AND Email = ? AND PhoneNumber = ? AND UserID = ? ");
             // Grab JSON and populate the SQL Query
             $query->bind_param("ssssi",
@@ -43,6 +37,10 @@
             );
             // Execute the SQL Query
             $query->execute();
+
+ // Poor man's debugger
+ returnStatus("Here...");
+
             // Status will be the number of rows deleted. This should be either a 1 for success or 0 for failure
             $status = $query->get_result()->fetch_assoc();
 
