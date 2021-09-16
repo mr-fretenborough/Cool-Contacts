@@ -20,16 +20,16 @@ $conn = new mysqli("localhost", "DBADMIN", "DBADMIN", "ContactBook");
         LastName=?,
         Email=?,
         PhoneNumber=?,
-        where ID=?"
+        WHERE ID=?"
     ) VALUES (
         ?, ?, ?, ?, ?,
     ));
 		$stmt->bind_param("ssssi",
-        $body["FirstName"],
-        $body["LastName"],
-        $body["Email"],
-        $body["PhoneNumber"],
-        $body["ID"]);
+        $FirstName,
+        $LastName,
+        $Email,
+        $PhoneNumber,
+        $ID);
 		$stmt->execute();
 		$stmt->close();
 		$conn->close();
