@@ -26,20 +26,15 @@
             returnStatus($conn->connect_error);
         } else {
             // Seed the SQL Query with basic format
-            $query = $conn.prepare(" DELETE FROM ContactBook.Contacts WHERE FirstName = ? AND LastName = ? AND Email = ? AND PhoneNumber = ? AND UserID = ? ");
+            $query = $conn.prepare(" DELETE FROM Contacts WHERE FirstName = ? AND LastName = ? AND Email = ? AND PhoneNumber = ? AND UserID = ? ");
             // Grab JSON and populate the SQL Query
-            $query->bind_param("ssssi",
-                $body["FirstName"],
-                $body["LastName"],
-                $body["Email"],
-                $body["PhoneNumber"],
-                $body["UserID"]
-            );
+            $query->bind_param("ssssi", $body["FirstName"], $body["LastName"], $body["Email"], $body["PhoneNumber"], $body["UserID"]);
+
+             // Poor man's debugger
+        returnStatus("Here... after bind");
+
             // Execute the SQL Query
             $query->execute();
-
- // Poor man's debugger
- returnStatus("Here...");
 
             // Status will be the number of rows deleted. This should be either a 1 for success or 0 for failure
             $status = $query->get_result()->fetch_assoc();
