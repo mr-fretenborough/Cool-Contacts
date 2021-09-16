@@ -4,6 +4,9 @@
 
         // Grab the data and initiate the connection
         $body = json_decode(file_get_contents('php://input'), true);
+
+        echo $body;
+
         $conn = new mysqli("localhost", "DBADMIN", "DBADMIN", "ContactBook");
 
         /*
@@ -26,9 +29,9 @@
             returnStatus($conn->connect_error);
         } else {
             // Seed the SQL Query with basic format
-            $query = $conn.prepare(" DELETE FROM Contacts WHERE FirstName = ? AND LastName = ? AND Email = ? AND PhoneNumber = ? ");
+            $query = $conn.prepare(" DELETE FROM Contacts WHERE FirstName = ? ");
             // Grab JSON and populate the SQL Query
-            $query->bind_param("ssss", $body["FirstName"], $body["LastName"], $body["Email"], $body["PhoneNumber"]);
+            $query->bind_param("s", $body["FirstName"]);
             // Execute the SQL Query
             $query->execute();
 
