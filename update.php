@@ -14,7 +14,7 @@ $conn = new mysqli("localhost", "DBADMIN", "DBADMIN", "ContactBook");
 	}
 	else
 	{
-		$stmt = $conn->prepare(" UPDATE ContactBook.Contacts
+		$stmt = $conn->prepare(" UPDATE Contacts
       SET
         FirstName=?,
         LastName=?,
