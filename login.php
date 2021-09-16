@@ -1,5 +1,5 @@
 <?php
-	if($_SERVER['REQUEST_METHOD']==='GET')
+	if($_SERVER['REQUEST_METHOD']==='POST')
     {
         //the raw body MUST be in json format. body is case sensitive
         $reqBody = json_decode(file_get_contents('php://input'), true);
