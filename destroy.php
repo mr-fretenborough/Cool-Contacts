@@ -26,11 +26,7 @@
             returnStatus($conn->connect_error);
         } else {
             // Seed the SQL Query with basic format
-            $query = $conn.prepare(" DELETE FROM Contacts WHERE FirstName = ? AND LastName = ? AND Email = ? AND PhoneNumber = ? AND UserID = ? ");
-
-             // Poor man's debugger
-        returnStatus("Here...");
-
+            $query = $conn.prepare(" DELETE FROM Contacts WHERE FirstName = ? AND LastName = ? AND Email = ? AND PhoneNumber = ? AND UserID = ? ") or returnStatus("poor man's debugger");
             // Grab JSON and populate the SQL Query
             $query->bind_param("ssssi", $body["FirstName"], $body["LastName"], $body["Email"], $body["PhoneNumber"], $body["UserID"]);
             // Execute the SQL Query
