@@ -46,6 +46,9 @@
                 AND UserID = ?
             ");
 
+            // Poor man's debugger
+            returnStatus("After prepared statement.");
+
              // Check if the query preparation completed successfully
              if ( false === $stmt ) {
                 returnStatus('FAILURE: Query preparation failed.');
