@@ -1,4 +1,5 @@
 <?php
+
  	$inData = getRequestInfo();
 
    $FirstName=$inData["FirstName"];
@@ -34,6 +35,7 @@
  		returnWithError("");
  	}
 
+
  	function getRequestInfo()
  	{
  		return json_decode(file_get_contents('php://input'), true);
@@ -50,5 +52,3 @@
  		$retValue = '{"error":"' . $err . '"}';
  		sendResultInfoAsJson( $retValue );
  	}
-
- ?>
