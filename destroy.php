@@ -37,6 +37,9 @@
         if ($conn->connect_error) {
             returnStatus($conn->connect_error);
         } else {
+            // Poor man's debugger
+            returnStatus("Before prepared statement.");
+
              // Seed the SQL Query with basic format
              $stmt = $conn.prepare(" DELETE FROM Contacts
                 WHERE FirstName = ?
