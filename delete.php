@@ -30,15 +30,14 @@
             $stmt->execute();
 
             // Grab the result. This should be the number of rows deleted
-            $result = $stmt->get_result()->fetch_assoc();
+            $deleted = mysql_affected_rows();
 
-            if( $result == 1 )
-            {
-                returnWithInfo( $result );
-            }
-            else
-            {
-                returnWithError( $result );
+            if ($deleted === 1) {
+                returnWithError($deleted . ' rows deleted');
+            } elseif ($deted === 0) {
+                returnWithError("0 rows affected");
+            } else {
+                returnWithError("More than one row was deleted.")
             }
 
             $stmt->close();
