@@ -47,7 +47,7 @@
 
     function returnStatus( $message )
     {
-        $object = '{"error":"' . $message . '"}';
+        $object = '{"status":"' . $message . '"}';
         header('Content-type: application/json');
         echo $object;
     }
