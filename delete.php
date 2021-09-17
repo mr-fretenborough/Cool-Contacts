@@ -1,6 +1,21 @@
 <?php
-	if($_SERVER['REQUEST_METHOD']==='POST')
-    {
+        /**************************************
+             The input is to be of the form:
+                {
+                    "FirstName":"",
+                    "LastName":"",
+                    "Email":"",
+                    "PhoneNumber":"",
+                    "UserID":""
+                }
+            The output will be of the form:
+                {
+                    "status":""
+                }
+        ***************************************/
+
+
+    if ($_SERVER['REQUEST_METHOD']==='POST') {
         // Pull the JSON object from the POST request
         $body = json_decode(file_get_contents('php://input'), true);
 
