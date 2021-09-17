@@ -33,11 +33,11 @@
             $deleted = $conn->affected_rows;
 
             if ($deleted === 1) {
-                returnStatus($deleted);
+                returnStatus("SUCCESS: One row was deleted.");
             } elseif ($deted === 0) {
-                returnStatus("0 rows affected");
+                returnStatus("ERROR: No rows were deleted.");
             } else {
-                returnStatus("More than one row was deleted.");
+                returnStatus("FAILURE: Multiple rows were deleted.");
             }
 
             $stmt->close();
