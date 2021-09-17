@@ -34,7 +34,7 @@
             returnStatus( $conn->connect_error );
         } else {
             // Create the query template
-            $query = $conn->prepare(" INSERT INTO ContactBook.Contacts
+            $query = $conn->prepare(" INSERT INTO Contacts
                     FirstName,
                     LastName,
                     Email,
