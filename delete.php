@@ -33,7 +33,7 @@
             $deleted = mysql_affected_rows();
 
             if ($deleted === 1) {
-                returnWithError($deleted . ' rows deleted');
+                returnWithError($deleted);
             } elseif ($deted === 0) {
                 returnWithError("0 rows affected");
             } else {
