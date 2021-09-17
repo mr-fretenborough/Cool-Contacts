@@ -30,7 +30,7 @@
             $stmt->execute();
 
             // Grab the result. This should be the number of rows deleted
-            $deleted = mysql_affected_rows();
+            $deleted = $conn->affected_rows;
 
             if ($deleted === 1) {
                 returnWithError($deleted);
