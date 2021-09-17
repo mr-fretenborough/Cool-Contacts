@@ -37,7 +37,7 @@
             } elseif ($deted === 0) {
                 returnWithError("0 rows affected");
             } else {
-                returnWithError("More than one row was deleted.")
+                returnWithError("More than one row was deleted.");
             }
 
             $stmt->close();
