@@ -4,6 +4,13 @@
         // Pull the JSON object from the POST request
         $body = json_decode(file_get_contents('php://input'), true);
 
+        // Parse the JSON object
+        $first = $body["FirstName"];
+        $last = $body["LastName"];
+        $email = $body["Email"];
+        $number = $body["PhoneNumber"];
+        $user = $body["UserID"];
+
         // Establish the connection to the MySQL Instance
         $conn = new mysqli("localhost", "DBADMIN", "DBADMIN", "ContactBook");
 
@@ -21,7 +28,7 @@
             ");
 
             // Bind the parameters from the JSON object to the SQL query
-            $query->bind_param("ssssi", $body["FirstName"], $body["LastName"], $body["Email"], $body["PhoneNumber"], $body["UserID"]);
+            $query->bind_param("ssssi", $first, $last, $email, $number, $user);
 
             // Execute the SQL query
             $query->execute();
