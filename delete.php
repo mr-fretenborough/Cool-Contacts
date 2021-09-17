@@ -8,12 +8,9 @@
         $conn = new mysqli("localhost", "DBADMIN", "DBADMIN", "ContactBook");
 
         // Validate the connection
-        if( $conn->connect_error )
-        {
+        if ( $conn->connect_error ) {
             returnStatus( $conn->connect_error );
-        }
-        else
-        {
+        } else {
             // Create the query template
             $stmt = $conn->prepare(" DELETE FROM Contacts
                 WHERE FirstName = ?
