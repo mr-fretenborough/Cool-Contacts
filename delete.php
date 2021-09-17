@@ -1,38 +1,28 @@
 <?php
 	if($_SERVER['REQUEST_METHOD']==='POST')
     {
-        // Pull the JSON object from the POST request
+        //the raw body MUST be in json format. body is case sensitive
         $reqBody = json_decode(file_get_contents('php://input'), true);
-
-        // Establish the connection to the MySQL Instance
         $conn = new mysqli("localhost", "DBADMIN", "DBADMIN", "ContactBook");
 
-        // Validate the connection
         if( $conn->connect_error )
         {
             returnWithError( $conn->connect_error );
         }
         else
         {
-            // Create the query template
             $stmt = $conn->prepare(" DELETE FROM Contacts
-                WHERE FirstName = ?
-                AND LastName = ?
-                AND Email = ?
-                AND PhoneNumber = ?
-                AND UserID = ?
-            ");
-
-            // Bind the parameters from the JSON object to the SQL query
+            WHERE FirstName = ?
+            AND LastName = ?
+            AND Email = ?
+            AND PhoneNumber = ?
+            AND UserID = ?
+        ");
             $stmt->bind_param("ssssi", $reqBody["FirstName"], $reqBody["LastName"], $reqBody["Email"], $reqBody["PhoneNumber"], $reqBody["UserID"]);
-
-            // Execute the SQL query
             $stmt->execute();
-
-            // Grab the result. This should be the number of rows deleted
             $result = $stmt->get_result()->fetch_assoc();
 
-            if( $result == 1 )
+            if( $result )
             {
                 returnWithInfo( $result );
             }
