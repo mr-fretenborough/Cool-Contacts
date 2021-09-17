@@ -10,7 +10,7 @@
         // Validate the connection
         if( $conn->connect_error )
         {
-            returnWithError( $conn->connect_error );
+            returnStatus( $conn->connect_error );
         }
         else
         {
@@ -33,11 +33,11 @@
             $deleted = $conn->affected_rows;
 
             if ($deleted === 1) {
-                returnWithError($deleted);
+                returnStatus($deleted);
             } elseif ($deted === 0) {
-                returnWithError("0 rows affected");
+                returnStatus("0 rows affected");
             } else {
-                returnWithError("More than one row was deleted.");
+                returnStatus("More than one row was deleted.");
             }
 
             $stmt->close();
@@ -45,21 +45,10 @@
         }
     }
 
-    function sendResultInfoAsJson( $obj )
+    function returnStatus( $message )
     {
+        $object = '{"error":"' . $message . '"}';
         header('Content-type: application/json');
-        echo $obj;
-    }
-
-    function returnWithError( $err )
-    {
-        $retValue = '{"error":"' . $err . '"}';
-        sendResultInfoAsJson( $retValue );
-    }
-
-    function returnWithInfo( $id )
-    {
-        $retValue = '{"result":' . $id . '"}';
-        sendResultInfoAsJson( $retValue );
+        echo $object;
     }
 ?>
