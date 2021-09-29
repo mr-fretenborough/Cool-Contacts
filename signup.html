@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="./style.css">
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
@@ -16,17 +16,18 @@
 <body>
     <div class="center signup">
         <h1>Cool Contacts</h1>
-        <h2>Sign up to keep all your contacts in one place.</h2>
-        <form action="" method="post">
-            <input type="text" name="firstName" placeholder="First Name"><br>
-            <input type="text" name="lastName" placeholder="Last Name"><br>
-            <input type="text" name="usrname" placeholder="Username"><br>
-            <input type="text" name="email" placeholder="Email"><br>
-            <input type="password" name="password" placeholder="Password"><br>
-            <button>Sign Up</button>
-        </form>
+        <h2 id="loginResult">Sign up to keep all your contacts in one place.</h2>
+	<div>
+            <input id="firstName" type="text" name="firstName" placeholder="First Name" required><br>
+            <input id="lastName" type="text" name="lastName" placeholder="Last Name" required><br>
+            <input id="login" type="text" name="usrname" placeholder="Username" required><br>
+            <input id="password" type="password" name="password" placeholder="Password" required><br>
+            <button onClick="registerUser()">Sign Up</button>
+        </div>
         <p>Already Registered? <a href="./index.html">Login here</a></p>
     </div>
+    <script src="js/md5.js"></script>
+    <script src="js/code.js"></script>
 </body>
 
 </html>
